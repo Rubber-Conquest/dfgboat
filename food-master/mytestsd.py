@@ -26,7 +26,7 @@ def name(m):
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         bot.send_message(m.chat.id, 'Акций к сожалению нет :(', reply_markup=keyboard)
     elif m.text == 'Поиск по ингредиентам': #####делаю поиск по ингредиентам
-        msg = ""
+        msg = bot.send_message(m.chat.id, "Отлично")
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert3) for advert3 in ['Пицца', 'Суши']])
         keyboard.add(*[types.KeyboardButton(advert3) for advert3 in ['Первое блюдо', 'Второе блюдо']])
@@ -50,8 +50,8 @@ def name(m):
 #####################################################################################################
 #делаю поиск по ингредиентам
 def advert3(m):
-    if m.text.lower()=='Пицца':
-        msg = ""
+    if m.text == 'Пицца':
+        msg = bot.send_message(m.chat.id, "Отлично")
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Которые входят в состав']])
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Без этих ингредиентов']])
@@ -60,11 +60,38 @@ def advert3(m):
         bot.register_next_step_handler(msg, advert33)
 
 def advert33(m):
-    if m.text.lower()=='Которые входят в состав':
-            bot.send_message(m.chat.id,'Провожу поиск...')
-            #
-    if m.text.lower()=='Без этих ингредиентов':
-            bot.send_message(m.chat.id,'Провожу поиск...')
-            #
+    if m.text == 'Которые входят в состав':
+        msg = bot.send_message(m.chat.id, "Отлично")
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Соус томатный','Соус цезарь']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Соус грибной','Соус сырный']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Креметте','Шампиньоны']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Сыр Моцарелла','Сыр Пармезан']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Пепперони','Ветчина','Бекон','Салями']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Цыплёнок','Орегано','Лук']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Томаты','Базилик','Маслины']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Тунец','Перец',]])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        bot.send_message(m.chat.id,'Выберете ингредиент')
+        bot.register_next_step_handler(msg, find_food)
+            
+    if m.text == 'Без этих ингредиентов':
+        msg = bot.send_message(m.chat.id, "Отлично")
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Соус томатный','Соус цезарь']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Соус грибной','Соус сырный']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Креметте','Шампиньоны']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Сыр Моцарелла','Сыр Пармезан']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Пепперони','Ветчина','Бекон','Салями']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Цыплёнок','Орегано','Лук']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Томаты','Базилик','Маслины']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Тунец','Перец',]])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        bot.send_message(m.chat.id,'Выберете ингредиент')
+        bot.register_next_step_handler(msg, find_food)
+
+def find_food(m):
+    bot.send_message(m.chat.id,'Произвожу анализ...')
+            
 #####################################################################################################
 bot.polling()
