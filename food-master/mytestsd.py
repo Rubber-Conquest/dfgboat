@@ -29,7 +29,7 @@ def name(m):
         msg = ""
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert3) for advert3 in ['Пицца', 'Суши']])
-        keyboard.add(*[types.KeyboardButton(advert3) for adver3 in ['Первое блюдо', 'Второе блюдо']])
+        keyboard.add(*[types.KeyboardButton(advert3) for advert3 in ['Первое блюдо', 'Второе блюдо']])
         keyboard.add(*[types.KeyboardButton(advert3) for advert3 in ['Салат']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         bot.send_message(m.chat.id, 'Что будем искать?', reply_markup=keyboard)
