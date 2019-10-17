@@ -50,13 +50,16 @@ def name(m):
 #####################################################################################################
 #делаю поиск по ингредиентам
 def advert3(m):
-    if m.text == 'Пицца':
+    if m.text=='Назад':
+        msg = bot.send_message(m.chat.id, "Отлично")
+        bot.register_next_step_handler(msg, start)
+    elif m.text == 'Пицца':
         msg = bot.send_message(m.chat.id, "Отлично")
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Которые входят в состав']])
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Без этих ингредиентов']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
-        bot.send_message(m.chat.id, 'Какие ингредиенты ищем?', reply_markup=keyboard)
+        m=bot.send_message(m.chat.id, 'Какие ингредиенты ищем?', reply_markup=keyboard)
         bot.register_next_step_handler(msg, advert33)
 
 def advert33(m):
