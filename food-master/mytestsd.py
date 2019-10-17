@@ -16,52 +16,54 @@ def start(m):
 def name(m):
     if m.text == 'Меню':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Еда']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Напитки']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
+        keyboard.add(*[types.KeyboardButton(advert1) for advert1 in ['Еда']])
+        keyboard.add(*[types.KeyboardButton(advert1) for advert1 in ['Напитки']])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         bot.send_message(m.chat.id, 'Еда или напитки?', reply_markup=keyboard)
     elif m.text == 'Акции':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['В разработке']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
+        keyboard.add(*[types.KeyboardButton(advert2) for advert2 in ['В разработке']])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         bot.send_message(m.chat.id, 'Акций к сожалению нет :(', reply_markup=keyboard)
     elif m.text == 'Поиск по ингредиентам': #####делаю поиск по ингредиентам
+        msg = ""
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(name) for name in ['Пицца', 'Суши']])
-        keyboard.add(*[types.KeyboardButton(name) for name in ['Первое блюдо', 'Второе блюдо']])
-        keyboard.add(*[types.KeyboardButton(name) for name in ['Салат']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
+        keyboard.add(*[types.KeyboardButton(advert3) for advert3 in ['Пицца', 'Суши']])
+        keyboard.add(*[types.KeyboardButton(advert3) for adver3 in ['Первое блюдо', 'Второе блюдо']])
+        keyboard.add(*[types.KeyboardButton(advert3) for advert3 in ['Салат']])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         bot.send_message(m.chat.id, 'Что будем искать?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, find_menu)
+        bot.register_next_step_handler(msg, advert3)
     elif m.text == 'Расчёт калорий':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Выбрать категорию']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Выбрать блюдо']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Рассчитать и вывести']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
+        keyboard.add(*[types.KeyboardButton(advert4) for advert4 in ['Выбрать категорию']])
+        keyboard.add(*[types.KeyboardButton(advert4) for advert4 in ['Выбрать блюдо']])
+        keyboard.add(*[types.KeyboardButton(advert4) for advert4 in ['Рассчитать и вывести']])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         bot.send_message(m.chat.id, 'Что нужно сделать?', reply_markup=keyboard)
     elif m.text == 'Корзина':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Оформить заказ']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Убрать некоторую еду из корзины']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
+        keyboard.add(*[types.KeyboardButton(advert5) for advert5 in ['Оформить заказ']])
+        keyboard.add(*[types.KeyboardButton(advert5) for advert5 in ['Убрать некоторую еду из корзины']])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         bot.send_message(m.chat.id, 'Что нужно сделать?', reply_markup=keyboard)
 #####################################################################################################
 #делаю поиск по ингредиентам
-def find_menu(msg):
-    if msg.text.lower()=='пицца':
+def advert3(m):
+    if m.text.lower()=='Пицца':
+        msg = ""
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Которые входят в состав']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Без этих ингредиентов']])
-        keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Которые входят в состав']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Без этих ингредиентов']])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         bot.send_message(m.chat.id, 'Какие ингредиенты ищем?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, find_food)
+        bot.register_next_step_handler(msg, advert33)
 
-def find_food(msg):
-    if msg.text.lower()=='которые входят в состав':
+def advert33(m):
+    if m.text.lower()=='Которые входят в состав':
             bot.send_message(m.chat.id,'Провожу поиск...')
             #
-    if msg.text.lower()=='без этих ингредиентов':
+    if m.text.lower()=='Без этих ингредиентов':
             bot.send_message(m.chat.id,'Провожу поиск...')
             #
 #####################################################################################################
