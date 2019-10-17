@@ -1,0 +1,34 @@
+import telebot
+from telebot import types
+
+bot = telebot.TeleBot(config.token)
+
+@bot.message_handler(commands=["start"])
+def start(m):
+    msg = bot.send_message(m.chat.id, "Вас приветствует Бот")
+    keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+    keyboard.add(*[types.KeyboardButton(name) for name in ['Меню', 'Акции']])
+    keyboard.add(*[types.KeyboardButton(name) for name in ['Поиск по ингридиентам', 'Расчёт калорий']])
+    keyboard.add(*[types.KeyboardButton(name) for name in ['Корзина']])
+    bot.send_message(m.chat.id, 'Выберите в меню что вам интересно!',
+        reply_markup=keyboard)
+    bot.register_next_step_handler(msg, name)
+
+def name(m):
+    if m.text == 'Меню':
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert) for advert in ['']])
+        keyboard.add(*[types.KeyboardButton(advert) for advert in ['']])
+        bot.send_message(m.chat.id, '',
+            reply_markup=keyboard)
+    elif m.text == 'Акции':
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert) for advert in ['', '']])
+        keyboard.add(*[types.KeyboardButton(advert) for advert in ['']])
+        bot.send_message(m.chat.id, '',
+            reply_markup=keyboard)
+    elif m.text == 'Поиск по':
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert) for advert in ['']])
+        bot.send_message(m.chat.id, '',
+            reply_markup=keyboard)
