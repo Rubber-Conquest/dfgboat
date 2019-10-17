@@ -20,13 +20,11 @@ def name(m):
         keyboard.add(*[types.KeyboardButton(advert) for advert in ['Напитки']])
         keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
         bot.send_message(m.chat.id, 'Еда или напитки?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, name)
     elif m.text == 'Акции':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert) for advert in ['В разработке']])
         keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
         bot.send_message(m.chat.id, 'Акций к сожалению нет :(', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, name)
     elif m.text == 'Поиск по ингредиентам': #####делаю поиск по ингредиентам
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(name) for name in ['Пицца', 'Суши']])
@@ -42,14 +40,12 @@ def name(m):
         keyboard.add(*[types.KeyboardButton(advert) for advert in ['Рассчитать и вывести']])
         keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
         bot.send_message(m.chat.id, 'Что нужно сделать?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, name)
     elif m.text == 'Корзина':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert) for advert in ['Оформить заказ']])
         keyboard.add(*[types.KeyboardButton(advert) for advert in ['Убрать некоторую еду из корзины']])
         keyboard.add(*[types.KeyboardButton(advert) for advert in ['Назад']])
         bot.send_message(m.chat.id, 'Что нужно сделать?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, name)
 #####################################################################################################
 #делаю поиск по ингредиентам
 def find_menu(msg):
@@ -61,7 +57,7 @@ def find_menu(msg):
         bot.send_message(m.chat.id, 'Какие ингредиенты ищем?', reply_markup=keyboard)
         bot.register_next_step_handler(msg, find_food)
 
-def find_food_pizza(msg):
+def find_food(msg):
     if msg.text.lower()=='которые входят в состав':
             bot.send_message(m.chat.id,'Провожу поиск...')
             #
