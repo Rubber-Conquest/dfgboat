@@ -122,6 +122,7 @@ def eat_menu(m):
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Вегетарианская', 'Грибная пепперони']])
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Грибная', 'Три сыра']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        m=bot.send_message(m.chat.id, 'Введите вручную либо нажмите на кнопку', reply_markup=keyboard)
         bot.register_next_step_handler(msg, about_pizza)
     if m.text=='Суши':
         msg = bot.send_message(m.chat.id, sushi_menu)
@@ -130,6 +131,7 @@ def eat_menu(m):
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Ролл Сочная креветка', 'Ролл Берри']])
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Ролл Калифорния в кунжуте', 'Ролл Калифорния с креветкой']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        m=bot.send_message(m.chat.id, 'Введите вручную либо нажмите на кнопку', reply_markup=keyboard)
         bot.register_next_step_handler(msg, about_sushi)
     if m.text=='Салат':
         msg = bot.send_message(m.chat.id, salat_menu)
@@ -138,6 +140,7 @@ def eat_menu(m):
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Винегрет', 'Морковный']])
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Салат Столичный']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        m=bot.send_message(m.chat.id, 'Введите вручную либо нажмите на кнопку', reply_markup=keyboard)
         bot.register_next_step_handler(msg, about_salat)
         
     if m.text=='Первое блюдо':
@@ -147,6 +150,7 @@ def eat_menu(m):
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Суп "Харчо"', 'Солянка домашняя']])
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Суп-лапша куриная домашняя']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        m=bot.send_message(m.chat.id, 'Введите вручную либо нажмите на кнопку', reply_markup=keyboard)
         bot.register_next_step_handler(msg, about_first)
     if m.text=='Второе блюдо':
         msg = bot.send_message(m.chat.id, second_menu)
@@ -155,6 +159,7 @@ def eat_menu(m):
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Рулет омлет', 'Поджарка из свинины']])
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Филе куриное запеченое в фольге']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        m=bot.send_message(m.chat.id, 'Введите вручную либо нажмите на кнопку', reply_markup=keyboard)
         bot.register_next_step_handler(msg, about_second)
 
 
@@ -184,49 +189,49 @@ def about_pizza(m):
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
         msg = bot.send_photo(m.chat.id,photo=pizza_pic[0])
         m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
+        bot.register_next_step_handler(msg, make_orderP)
     if m.text=='Сырная':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
         msg = bot.send_photo(m.chat.id,photo=pizza_pic[1])
         m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
+        bot.register_next_step_handler(msg, make_orderP)
     if m.text=='Супер Мит':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
         msg = bot.send_photo(m.chat.id,photo=pizza_pic[2])
         m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
+        bot.register_next_step_handler(msg, make_orderP)
     if m.text=='Морская с тунцом':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
         msg = bot.send_photo(m.chat.id,photo=pizza_pic[3])
         m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
+        bot.register_next_step_handler(msg, make_orderP)
     if m.text=='Вегетарианская':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
         msg = bot.send_photo(m.chat.id,photo=pizza_pic[4])
         m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
+        bot.register_next_step_handler(msg, make_orderP)
     if m.text=='Грибная пепперони':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
         msg = bot.send_photo(m.chat.id,photo=pizza_pic[5])
         m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
+        bot.register_next_step_handler(msg, make_orderP)
     if m.text=='Грибная':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
         msg = bot.send_photo(m.chat.id,photo=pizza_pic[6])
         m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
+        bot.register_next_step_handler(msg, make_orderP)
     if m.text=='Три сыра':
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
         msg = bot.send_photo(m.chat.id,photo=pizza_pic[7])
         m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
+        bot.register_next_step_handler(msg, make_orderP)
        
 def about_sushi(m):
     if m.text=='Назад':
@@ -286,5 +291,15 @@ def make_order(m):
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         m=bot.send_message(m.chat.id, 'Что желаете заказать?', reply_markup=keyboard)
         bot.register_next_step_handler(msg, eat_menu)
-            
+def make_orderP(m):
+    if m.text=="Нет": 
+        msg = bot.send_message(m.chat.id, "Выполняю переход назад...")
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Пепперони и томаты', 'Сырная']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Супер Мит', 'Морская с тунцом']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Вегетарианская', 'Грибная пепперони']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Грибная', 'Три сыра']])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        m=bot.send_message(m.chat.id, 'Что желаете заказать?', reply_markup=keyboard)
+        bot.register_next_step_handler(msg, about_pizza)           
 bot.polling(none_stop=True)
