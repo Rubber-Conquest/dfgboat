@@ -3,6 +3,9 @@ from telebot import types
 from database_sushi import roll_pic
 from database_pizza import pizza_pic
 from database_salat import salat_pic
+from database_first import first_pic
+from database_second import second_pic
+from database_drink import drink_pic
 
 bot = telebot.TeleBot("944485905:AAHrw7jtHjnAVxqU7GsPS_xrhPPO6fUdiqU")
 
@@ -148,8 +151,8 @@ def eat_menu(m):
         msg = bot.send_message(m.chat.id, first_menu)
         keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Окрошка на кефире', 'Рассольник Петербургский']])
-        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Суп "Харчо"', 'Солянка домашняя']])
-        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Суп-лапша куриная домашняя']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Суп "Харчо"', 'Суп-лапша куриная домашняя']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Солянка домашняя']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         m=bot.send_message(m.chat.id, 'Введите вручную либо нажмите на кнопку', reply_markup=keyboard)
         bot.register_next_step_handler(msg, about_first)
@@ -325,6 +328,50 @@ def about_salat(m):
 
 
 
+def about_first(m):
+    if m.text=='Назад':
+        msg = bot.send_message(m.chat.id, "Выполняю переход назад...")
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Пицца', 'Суши', 'Салат']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Первое блюдо', 'Второе блюдо']])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        m=bot.send_message(m.chat.id, 'Что желаете заказать?', reply_markup=keyboard)
+        bot.register_next_step_handler(msg, eat_menu)
+    if m.text=='Окрошка на кефире':
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
+        msg = bot.send_photo(m.chat.id,photo=first_pic[0])
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        bot.register_next_step_handler(msg, make_orderF)
+    if m.text=='Рассольник Петербургский':
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
+        msg = bot.send_photo(m.chat.id,photo=first_pic[1])
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        bot.register_next_step_handler(msg, make_orderF)
+    if m.text=='Суп "Харчо"':
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
+        msg = bot.send_photo(m.chat.id,photo=first_pic[2])
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        bot.register_next_step_handler(msg, make_orderF)
+    if m.text=='Суп - лапша куриная домашняя':
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
+        msg = bot.send_photo(m.chat.id,photo=first_pic[3])
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        bot.register_next_step_handler(msg, make_orderF)
+    if m.text=='Солянка домашняя':
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Да', 'Нет']])
+        msg = bot.send_photo(m.chat.id,photo=first_pic[4])
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        bot.register_next_step_handler(msg, make_orderF)
+
+
+
+
+
 def make_orderS(m):
     if m.text=='Нет':
         msg = bot.send_message(m.chat.id, "Выполняю переход назад...")
@@ -355,5 +402,15 @@ def make_orderSal(m):
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Салат Столичный']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
         m=bot.send_message(m.chat.id, 'Что желаете заказать?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, about_salat)           
+        bot.register_next_step_handler(msg, about_salat)
+def make_orderF(m):
+    if m.text=='Нет':
+        msg = bot.send_message(m.chat.id, "Выполняю переход назад...")
+        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Окрошка на кефире', 'Рассольник Петербургский']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Суп "Харчо"', 'Суп-лапша куриная домашняя']])
+        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Солянка домашняя']])
+        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+        m=bot.send_message(m.chat.id, 'Что желаете заказать?', reply_markup=keyboard)
+        bot.register_next_step_handler(msg, about_first)           
 bot.polling(none_stop=True)
