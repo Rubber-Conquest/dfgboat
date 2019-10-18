@@ -1,6 +1,6 @@
 import telebot
 from telebot import types
-from database_roll import roll,roll_names,roll_pic
+from database_sushi import roll,roll_names,roll_pic
 from database_pizza import pizza_pic
 global cart
 cart=[]
@@ -13,7 +13,7 @@ bot = telebot.TeleBot("944485905:AAHrw7jtHjnAVxqU7GsPS_xrhPPO6fUdiqU")
 def start(m):
     msg = bot.send_message(m.chat.id, "Hello")
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(*[types.KeyboardButton(name) for name in ['Ролл Хатамато', 'Ролл с тигровой креветкой и лососем']])
+    keyboard.add(*[types.KeyboardButton(name) for name in ['Ролл Хатамато', 'Ролл с тигровой креветкой и лососем','Корзина']])
     bot.send_message(m.chat.id, 'Выберите нужный пункт меню', reply_markup=keyboard)
     bot.register_next_step_handler(msg, about_sushi)
     
@@ -46,11 +46,12 @@ def make_order(m):
             if h==o:
                 global cart
                 cart.append(h)
+                cart_cost.append(h)
     
     keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-    keyboard.add(*[types.KeyboardButton(advert34) for advert34 in ['Корзина','Назад']])
+    keyboard.add(*[types.KeyboardButton(advert34) for advert34 in ['Ролл Хатамато', 'Ролл с тигровой креветкой и лососем','Корзина']])
     msg=bot.send_message(m.chat.id,"Добавлено",reply_markup=keyboard)
-    bot.register_next_step_handler(msg,cart_list) 
+    bot.register_next_step_handler(msg,start) 
                 
              
 def cart_list(m):
@@ -58,7 +59,7 @@ def cart_list(m):
     if m.text=='Корзина':
         for number1 in range(len(cart)):
             msg=bot.send_message(m.chat.id,cart[number1])
-    if m.text=='Назад':
+
         #здесь кнопку до выбора сделайте
         
     

@@ -13,7 +13,7 @@ drink.append(drink_j7)
 drink.append(drink_pepsi)
 drink.append(drink_water)
 
-drink_name=["Смузи персик клубника","Кофе Фокс","Pepsi","Вода бутилизованная питьевая газированная"]
+drink_names=["Смузи персик клубника","Кофе Фокс","Сок J7","Pepsi","Вода бутилизованная питьевая газированная"]
 
 drink1=open('drink\drink1.png','rb')
 drink2=open('drink\drink2.png','rb')

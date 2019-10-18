@@ -37,7 +37,7 @@ salat.append(salat_stol)
 salat.append(salat_vin)
 salat.append(salat_mork)
 
-salat_name=["Летний","Овощной коктейль","Салат Столичный","Винегрет","Морковный"]
+salat_names=["Летний","Овощной коктейль","Салат Столичный","Винегрет","Морковный"]
 
 salat1=open('salat\salat1.png','rb')
 salat2=open('salat\salat2.png','rb')
