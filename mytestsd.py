@@ -167,60 +167,60 @@ def drink_menu(m):
         bot.send_message(m.chat.id, 'Еда или напитки?', reply_markup=keyboard)
         bot.register_next_step_handler(msg, menu_menu)
     
-
-
-def about_pizza(m):
-    if m.text=='Назад':
-        msg = bot.send_message(m.chat.id, "Выполняю переход назад...")
-        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
-        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Пепперони и томаты', 'Сырная']])
-        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Супер Мит', 'Морская с тунцом']])
-        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Вегетарианская', 'Грибная пепперони']])
-        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Грибная', 'Три сыра']])
-        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
-        m=bot.send_message(m.chat.id, 'Что желаете заказать?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, eat_menu)
-    if m.text=='Пепперони и томаты':
-        msg = bot.send_message(m.chat.id, "Отлично")
-        msg = bot.send_photo(m.chat.id,photo=pizza_pic[0])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
-    if m.text=='Сырная':
-        msg = bot.send_message(m.chat.id, "Отлично")
-        msg = bot.send_photo(m.chat.id,photo=pizza_pic[1])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
-    if m.text=='Супер Мит':
-        msg = bot.send_message(m.chat.id, "Отлично")
-        msg = bot.send_photo(m.chat.id,photo=pizza_pic[2])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
-    if m.text=='Морская с тунцом':
-        msg = bot.send_message(m.chat.id, "Отлично")
-        msg = bot.send_photo(m.chat.id,photo=pizza_pic[3])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
-    if m.text=='Вегетарианская':
-        msg = bot.send_message(m.chat.id, "Отлично")
-        msg = bot.send_photo(m.chat.id,photo=pizza_pic[4])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
-    if m.text=='Грибная пепперони':
-        msg = bot.send_message(m.chat.id, "Отлично")
-        msg = bot.send_photo(m.chat.id,photo=pizza_pic[5])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
-    if m.text=='Грибная':
-        msg = bot.send_message(m.chat.id, "Отлично")
-        msg = bot.send_photo(m.chat.id,photo=pizza_pic[6])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
-    if m.text=='Три сыра':
-        msg = bot.send_message(m.chat.id, "Отлично")
-        msg = bot.send_photo(m.chat.id,photo=pizza_pic[7])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
-        bot.register_next_step_handler(msg, make_order)
-       
+#################
+#оно работает (в теории), но пока нет массива с картинками
+#def about_pizza(m):
+#    if m.text=='Назад':
+#        msg = bot.send_message(m.chat.id, "Выполняю переход назад...")
+#        keyboard = types.ReplyKeyboardMarkup(resize_keyboard=True)
+#        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Пепперони и томаты', 'Сырная']])
+#        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Супер Мит', 'Морская с тунцом']])
+#        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Вегетарианская', 'Грибная пепперони']])
+#        keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Грибная', 'Три сыра']])
+#        keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
+#        m=bot.send_message(m.chat.id, 'Что желаете заказать?', reply_markup=keyboard)
+#        bot.register_next_step_handler(msg, eat_menu)
+#    if m.text=='Пепперони и томаты':
+#        msg = bot.send_message(m.chat.id, "Отлично")
+#        msg = bot.send_photo(m.chat.id,photo=pizza_pic[0])
+#        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+#        bot.register_next_step_handler(msg, make_order)
+#    if m.text=='Сырная':
+#        msg = bot.send_message(m.chat.id, "Отлично")
+#        msg = bot.send_photo(m.chat.id,photo=pizza_pic[1])
+#        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+#        bot.register_next_step_handler(msg, make_order)
+#    if m.text=='Супер Мит':
+#        msg = bot.send_message(m.chat.id, "Отлично")
+#        msg = bot.send_photo(m.chat.id,photo=pizza_pic[2])
+#        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+#        bot.register_next_step_handler(msg, make_order)
+#    if m.text=='Морская с тунцом':
+#        msg = bot.send_message(m.chat.id, "Отлично")
+#        msg = bot.send_photo(m.chat.id,photo=pizza_pic[3])
+#        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+#        bot.register_next_step_handler(msg, make_order)
+#    if m.text=='Вегетарианская':
+#        msg = bot.send_message(m.chat.id, "Отлично")
+#        msg = bot.send_photo(m.chat.id,photo=pizza_pic[4])
+#        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+#        bot.register_next_step_handler(msg, make_order)
+#    if m.text=='Грибная пепперони':
+#        msg = bot.send_message(m.chat.id, "Отлично")
+#        msg = bot.send_photo(m.chat.id,photo=pizza_pic[5])
+#        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+#        bot.register_next_step_handler(msg, make_order)
+#    if m.text=='Грибная':
+#        msg = bot.send_message(m.chat.id, "Отлично")
+#        msg = bot.send_photo(m.chat.id,photo=pizza_pic[6])
+#        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+#        bot.register_next_step_handler(msg, make_order)
+#    if m.text=='Три сыра':
+#        msg = bot.send_message(m.chat.id, "Отлично")
+#        msg = bot.send_photo(m.chat.id,photo=pizza_pic[7])
+#        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+#        bot.register_next_step_handler(msg, make_order)
+        
 def about_sushi(m):
     if m.text=='Назад':
         msg = bot.send_message(m.chat.id, "Выполняю переход назад...")
@@ -229,37 +229,37 @@ def about_sushi(m):
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Ролл Сочная креветка', 'Ролл Берри']])
         keyboard.add(*[types.KeyboardButton(advert33) for advert33 in ['Ролл Калифорния в кунжуте', 'Ролл Калифорния с креветкой']])
         keyboard.add(*[types.KeyboardButton(advert0) for advert0 in ['Назад']])
-        m=bot.send_message(m.chat.id, 'Что желаете заказать?', reply_markup=keyboard)
+        m = bot.send_message(m.chat.id, 'Что желаете заказать?')
         bot.register_next_step_handler(msg, eat_menu)
     if m.text=='Ролл Хатамото':
         msg = bot.send_message(m.chat.id, "Отлично")
         msg = bot.send_photo(m.chat.id,photo=roll_pic[0])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?')
         bot.register_next_step_handler(msg, make_order)
     if m.text=='Ролл с тигровой креветкой и лососем':
         msg = bot.send_message(m.chat.id, "Отлично")
         msg = bot.send_photo(m.chat.id,photo=roll_pic[1])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?')
         bot.register_next_step_handler(msg, make_order)
     if m.text=='Ролл Сочная креветка':
         msg = bot.send_message(m.chat.id, "Отлично")
         msg = bot.send_photo(m.chat.id,photo=roll_pic[2])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?')
         bot.register_next_step_handler(msg, make_order)
     if m.text=='Ролл Берри':
         msg = bot.send_message(m.chat.id, "Отлично")
         msg = bot.send_photo(m.chat.id,photo=roll_pic[3])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?')
         bot.register_next_step_handler(msg, make_order)
     if m.text=='Ролл Калифорния в кунжуте':
         msg = bot.send_message(m.chat.id, "Отлично")
         msg = bot.send_photo(m.chat.id,photo=roll_pic[4])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?')
         bot.register_next_step_handler(msg, make_order)
     if m.text=='Ролл Калифорния с креветкой':
         msg = bot.send_message(m.chat.id, "Отлично")
         msg = bot.send_photo(m.chat.id,photo=roll_pic[5])
-        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?', reply_markup=keyboard)
+        m=bot.send_message(m.chat.id, 'Добавить блюдо в корзину?')
         bot.register_next_step_handler(msg, make_order)
 
             
